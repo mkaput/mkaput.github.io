@@ -5,21 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Marek Kaput</title>
+    <meta name="description" content="Marek Kaput Personal Website" />
+
+    <link rel="“canonical”" href="“https://marek.omg.lol/”" />
+    <meta property="og:title" content="Marek Kaput" />
+    <meta property="og:description" content="Marek Kaput Personal Website" />
+    <meta property="og:url" content="https://marek.omg.lol" />
+    <meta property="og:image" content="https://www.gravatar.com/avatar/7499278d3aa70cc4721fd5ab70e72c73?s=1200">
+    <meta property="og:type" content="profile" />
+    <meta property="profile:first_name" content="Marek" />
+    <meta property="profile:last_name" content="Marek" />
+    <meta property="profile:username" content="mkaput" />
+    <meta property="profile:gender" content="male" />
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/reseter.css@2.0.0/css/reseter.min.css"
       integrity="sha256-cMtpX4kwJoSabSLF7DPEHDAy31GVZGpjrJ//i4SIINA="
       crossorigin="anonymous"
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      :root {
+        --color-background: #f8f5f1;
+        --color-text: #45526c;
+        --color-link: #5aa897;
+        --color-link-hover: #315e54;
+        --color-decor: #f8a488;
+        --time-step: 100ms;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        font: 300 125% "Londrina Solid", cursive;
+        background: var(--color-background);
+        color: var(--color-text);
+        border-bottom: 0.5em solid var(--color-decor);
+
+        display: grid;
+        place-content: center;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 400;
+      }
+
+      a {
+        color: var(--color-link);
+        text-decoration: none;
+        transition: all var(--time-step);
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--color-link-hover);
+      }
+
+      main {
+        display: grid;
+        row-gap: 2em;
+      }
+
+      header {
+        text-align: center;
+      }
+
+      #social > ul {
+        list-style-type: none;
+        display: grid;
+        place-content: center;
+        grid-auto-flow: column;
+        column-gap: 1em;
+      }
+
+      .socialIcon {
+        width: 2em;
+      }
+    </style>
   </head>
   <body>
     <main>
