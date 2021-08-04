@@ -1,0 +1,57 @@
+:root {
+    --color-background: #F8F5F1;
+    --color-text: #45526C;
+    --color-link: #5AA897;
+    --color-link-hover: #315E54;
+    --color-decor: #F8A488;
+    --time-step: 100ms;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font: 300 125% 'Londrina Solid', cursive;
+    background: var(--color-background);
+    color: var(--color-text);
+    border-bottom: 0.5em solid var(--color-decor);
+
+    display: grid;
+    place-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: all var(--time-step);
+}
+
+a:hover, a:focus {
+    color: var(--color-link-hover);
+}
+
+main {
+    display: grid;
+    row-gap: 2em;
+}
+
+header {
+    text-align: center;
+}
+
+#social > ul {
+    list-style-type: none;
+    display: grid;
+    place-content: center;
+    grid-auto-flow: column;
+    column-gap: 1em;
+}
+
+.socialIcon {
+    width: 2em;
+}
