@@ -3,10 +3,10 @@
 (function () {
   "use strict";
 
-  if (window.goatcounter && window.goatcounter.vars)
+  if (window.goatcounter && window.goatcounter.vars) {
     // Compatibility with very old version; do not use.
     window.goatcounter = window.goatcounter.vars;
-  else window.goatcounter = window.goatcounter || {};
+  } else window.goatcounter = window.goatcounter || {};
 
   // Load settings from data-goatcounter-settings.
   var s = document.querySelector("script[data-goatcounter]");
@@ -16,7 +16,7 @@
     } catch (err) {
       console.error("invalid JSON in data-goatcounter-settings: " + err);
     }
-    for (var k in set)
+    for (var k in set) {
       if (
         [
           "no_onload",
@@ -28,8 +28,10 @@
           "referrer",
           "event",
         ].indexOf(k) > -1
-      )
+      ) {
         window.goatcounter[k] = set[k];
+      }
+    }
   }
 
   var enc = encodeURIComponent;
@@ -41,7 +43,11 @@
       r: vars.referrer === undefined ? goatcounter.referrer : vars.referrer,
       t: vars.title === undefined ? goatcounter.title : vars.title,
       e: !!(vars.event || goatcounter.event),
-      s: [window.screen.width, window.screen.height, window.devicePixelRatio || 1],
+      s: [
+        window.screen.width,
+        window.screen.height,
+        window.devicePixelRatio || 1,
+      ],
       b: is_bot(),
       q: location.search,
     };
@@ -74,7 +80,9 @@
       d = document;
     if (w.callPhantom || w._phantom || w.phantom) return 150;
     if (w.__nightmare) return 151;
-    if (d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate) return 152;
+    if (
+      d.__selenium_unwrapped || d.__webdriver_evaluate || d.__driver_evaluate
+    ) return 152;
     if (navigator.webdriver) return 153;
     return 0;
   };
@@ -82,9 +90,14 @@
   // Object to urlencoded string, starting with a ?.
   var urlencode = function (obj) {
     var p = [];
-    for (var k in obj)
-      if (obj[k] !== "" && obj[k] !== null && obj[k] !== undefined && obj[k] !== false)
+    for (var k in obj) {
+      if (
+        obj[k] !== "" && obj[k] !== null && obj[k] !== undefined &&
+        obj[k] !== false
+      ) {
         p.push(enc(k) + "=" + enc(obj[k]));
+      }
+    }
     return "?" + p.join("&");
   };
 
@@ -108,14 +121,17 @@
       // May be relative or point to different domain.
       var a = document.createElement("a");
       a.href = c.href;
-      if (a.hostname.replace(/^www\./, "") === location.hostname.replace(/^www\./, "")) loc = a;
+      if (
+        a.hostname.replace(/^www\./, "") ===
+          location.hostname.replace(/^www\./, "")
+      ) loc = a;
     }
     return loc.pathname + loc.search || "/";
   };
 
   // Run function after DOM is loaded.
   var on_load = function (f) {
-    if (document.body === null)
+    if (document.body === null) {
       document.addEventListener(
         "DOMContentLoaded",
         function () {
@@ -123,33 +139,43 @@
         },
         false,
       );
-    else f();
+    } else f();
   };
 
   // Filter some requests that we (probably) don't want to count.
   goatcounter.filter = function () {
-    if ("visibilityState" in document && document.visibilityState === "prerender")
+    if (
+      "visibilityState" in document && document.visibilityState === "prerender"
+    ) {
       return "visibilityState";
-    if (!goatcounter.allow_frame && location !== parent.location) return "frame";
+    }
+    if (!goatcounter.allow_frame && location !== parent.location) {
+      return "frame";
+    }
     if (
       !goatcounter.allow_local &&
       location.hostname.match(
         /(localhost$|^127\.|^10\.|^172\.(1[6-9]|2[0-9]|3[0-1])\.|^192\.168\.|^0\.0\.0\.0$)/,
       )
-    )
+    ) {
       return "localhost";
-    if (!goatcounter.allow_local && location.protocol === "file:") return "localfile";
-    if (localStorage && localStorage.getItem("skipgc") === "t")
+    }
+    if (!goatcounter.allow_local && location.protocol === "file:") {
+      return "localfile";
+    }
+    if (localStorage && localStorage.getItem("skipgc") === "t") {
       return "disabled with #toggle-goatcounter";
+    }
     return false;
   };
 
   // Get URL to send to GoatCounter.
   window.goatcounter.url = function (vars) {
     var data = get_data(vars || {});
-    if (data.p === null)
+    if (data.p === null) {
       // null from user callback.
       return;
+    }
     data.rnd = Math.random().toString(36).substr(2, 5); // Browsers don't always listen to Cache-Control.
 
     var endpoint = get_endpoint();
@@ -190,28 +216,31 @@
   // Get a query parameter.
   window.goatcounter.get_query = function (name) {
     var s = location.search.substr(1).split("&");
-    for (var i = 0; i < s.length; i++)
-      if (s[i].toLowerCase().indexOf(name.toLowerCase() + "=") === 0)
+    for (var i = 0; i < s.length; i++) {
+      if (s[i].toLowerCase().indexOf(name.toLowerCase() + "=") === 0) {
         return s[i].substr(name.length + 1);
+      }
+    }
   };
 
   // Track click events.
   window.goatcounter.bind_events = function () {
-    if (!document.querySelectorAll)
+    if (!document.querySelectorAll) {
       // Just in case someone uses an ancient browser.
       return;
+    }
 
     var send = function (elem) {
       return function () {
         goatcounter.count({
           event: true,
           path: elem.dataset.goatcounterClick || elem.name || elem.id || "",
-          title:
-            elem.dataset.goatcounterTitle ||
+          title: elem.dataset.goatcounterTitle ||
             elem.title ||
             (elem.innerHTML || "").substr(0, 200) ||
             "",
-          referrer: elem.dataset.goatcounterReferrer || elem.dataset.goatcounterReferral || "",
+          referrer: elem.dataset.goatcounterReferrer ||
+            elem.dataset.goatcounterReferral || "",
         });
       };
     };
@@ -234,9 +263,11 @@
       opt.type = opt.type || "html";
       opt.append = opt.append || "body";
       opt.path = opt.path || get_path();
-      opt.attr = opt.attr || { width: "200", height: opt.no_branding ? "60" : "80" };
+      opt.attr = opt.attr ||
+        { width: "200", height: opt.no_branding ? "60" : "80" };
 
-      opt.attr["src"] = get_endpoint() + "er/" + enc(opt.path) + "." + enc(opt.type) + "?";
+      opt.attr["src"] = get_endpoint() + "er/" + enc(opt.path) + "." +
+        enc(opt.type) + "?";
       if (opt.no_branding) opt.attr["src"] += "&no_branding=1";
       if (opt.style) opt.attr["src"] += "&style=" + enc(opt.style);
       if (opt.start) opt.attr["src"] += "&start=" + enc(opt.start);
@@ -274,14 +305,17 @@
     }
   }
 
-  if (!goatcounter.no_onload)
+  if (!goatcounter.no_onload) {
     on_load(function () {
       // 1. Page is visible, count request.
       // 2. Page is not yet visible; wait until it switches to 'visible' and count.
       // See #487
-      if (!("visibilityState" in document) || document.visibilityState === "visible")
+      if (
+        !("visibilityState" in document) ||
+        document.visibilityState === "visible"
+      ) {
         goatcounter.count();
-      else {
+      } else {
         var f = function (e) {
           if (document.visibilityState !== "visible") return;
           document.removeEventListener("visibilitychange", f);
@@ -292,4 +326,5 @@
 
       if (!goatcounter.no_events) goatcounter.bind_events();
     });
+  }
 })();
