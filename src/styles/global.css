@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #fafafa;
+  --color-background-dark: #212121;
+  --color-text: #212121;
+  --color-text-dark: #eeeeee;
+  --color-link: #795548;
+  --color-link-dark: #bcaaa4;
+  --color-link-hover: #ff5722;
+  --color-link-hover-dark: #ffab91;
+  --color-decor: #6d4c41;
+
+  --font-serif:
+    "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+}
+
+html {
+  height: 100%;
+}
+
+@layer components {
+  .link {
+    @apply text-link hover:text-link-hover focus:text-link-hover dark:text-link-dark dark:hover:text-link-hover-dark dark:focus:text-link-hover-dark no-underline transition-colors duration-100;
+  }
+}
