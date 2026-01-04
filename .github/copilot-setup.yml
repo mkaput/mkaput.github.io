@@ -1,0 +1,43 @@
+# GitHub Copilot Setup Steps
+# This file defines how to set up and work with this repository
+
+setup:
+  # Install dependencies using Bun
+  - name: Install Bun dependencies
+    run: bun install --frozen-lockfile
+    description: Install all project dependencies using Bun package manager
+
+  # Build the project
+  - name: Build the project
+    run: bun run build
+    description: Build the Astro static site for production
+
+  # Optional: Run development server
+  - name: Start development server
+    run: bun run dev
+    description: Start the Astro development server (optional, for local development)
+    optional: true
+
+# Project metadata
+project:
+  name: mkaput.github.io
+  description: Personal website built with Astro and Tailwind CSS
+  type: static-site
+  framework: astro
+  package_manager: bun
+
+# Key files and directories
+structure:
+  source: src/
+  output: dist/
+  config:
+    - astro.config.mjs
+    - tailwind.config.mjs
+    - package.json
+
+# Development commands
+commands:
+  dev: bun run dev
+  build: bun run build
+  preview: bun run preview
+  format: bun run format
