@@ -1,159 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+---
+import RootLayout from "../layouts/RootLayout.astro";
+---
 
-    <title>Marek Kaput</title>
-    <meta name="description" content="Marek Kaput Personal Website" />
+<RootLayout
+  title={false}
+  description={"Skilled Rustacean and technology polyglot. " +
+    "Having a great track record of building complex software from nothing " +
+    "and establishing development teams working on it."}
+>
+  <main>
+    <header>
+      <h1>Marek Kaput</h1>
+      <p id="occupation">
+        Software Engineer at
+        <a href="https://swmansion.com">Software Mansion</a>.
+      </p>
+    </header>
 
-    <link rel="canonical" href="https://murek.dev/" />
-    <meta property="og:title" content="Marek Kaput" />
-    <meta property="og:description" content="Marek Kaput Personal Website" />
-    <meta property="og:url" content="https://murek.dev/" />
-    <meta
-      property="og:image"
-      content="https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200"
-    />
-    <meta property="og:type" content="profile" />
-    <meta property="profile:first_name" content="Marek" />
-    <meta property="profile:last_name" content="Kaput" />
-    <meta property="profile:username" content="mkaput" />
-    <meta property="profile:gender" content="male" />
-
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon32.png" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reseter.css@2.0.0/css/reseter.min.css"
-      integrity="sha256-cMtpX4kwJoSabSLF7DPEHDAy31GVZGpjrJ//i4SIINA="
-      crossorigin="anonymous"
-    />
-
-    <meta name="theme-color" content="#6d4c41" />
-
-    <style>
-      :root {
-        --color-background: #fafafa;
-        --color-text: #212121;
-        --color-link: #795548;
-        --color-link-hover: #ff5722;
-
-        --color-decor: #6d4c41;
-
-        --time-step: 100ms;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --color-background: #212121;
-          --color-text: #eeeeee;
-          --color-link: #bcaaa4;
-          --color-link-hover: #ffab91;
-        }
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        font: 400 175% "Iowan Old Style", "Palatino Linotype", "URW Palladio L",
-          P052, serif;
-        background: var(--color-background);
-        color: var(--color-text);
-        border-bottom: 0.5em solid var(--color-decor);
-
-        display: grid;
-        place-content: center;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-weight: 500;
-        font-size: 250%;
-      }
-
-      a {
-        color: var(--color-link);
-        text-decoration: none;
-        transition: all var(--time-step);
-      }
-
-      a:hover,
-      a:focus {
-        color: var(--color-link-hover);
-      }
-
-      main {
-        display: grid;
-        row-gap: 2em;
-      }
-
-      header {
-        text-align: center;
-      }
-
-      #links > ul {
-        list-style-type: none;
-        display: grid;
-        place-content: center;
-        grid-auto-flow: column;
-        column-gap: 1em;
-      }
-    </style>
-
-    <script
-      data-goatcounter="https://stats.murek.dev/count"
-      async
-      src="./count.js"
-    ></script>
-  </head>
-  <body>
-    <main>
-      <header>
-        <h1>Marek Kaput</h1>
-        <p id="occupation">
-          Software Engineer at
-          <a href="https://swmansion.com">Software Mansion</a>.
-        </p>
-      </header>
-
-      <section id="links">
-        <ul>
-          <li>
-            <a
-              href="https://github.com/mkaput"
-              class="externalLink"
-              title="@mkaput"
-              >GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://x.com/jajakobyly"
-              class="externalLink"
-              title="@jajakobyly"
-              >X</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/in/mkaput/"
-              class="externalLink"
-              title="LinkedIn Profile"
-              >LinkedIn</a
-            >
-          </li>
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
+    <section id="links">
+      <ul>
+        <li>
+          <a
+            href="https://github.com/mkaput"
+            class="externalLink"
+            title="@mkaput">GitHub</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://x.com/jajakobyly"
+            class="externalLink"
+            title="@jajakobyly">X</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/mkaput/"
+            class="externalLink"
+            title="LinkedIn Profile">LinkedIn</a
+          >
+        </li>
+      </ul>
+    </section>
+  </main>
+</RootLayout>

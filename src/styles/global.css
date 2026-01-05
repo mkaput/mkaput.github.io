@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --color-background: #fafafa;
+  --color-text: #212121;
+  --color-link: #795548;
+  --color-link-hover: #ff5722;
+
+  --color-decor: #6d4c41;
+
+  --time-step: 100ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #212121;
+    --color-text: #eeeeee;
+    --color-link: #bcaaa4;
+    --color-link-hover: #ffab91;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font:
+    400 175% "Iowan Old Style",
+    "Palatino Linotype",
+    "URW Palladio L",
+    P052,
+    serif;
+  background: var(--color-background);
+  color: var(--color-text);
+  border-bottom: 0.5em solid var(--color-decor);
+
+  display: grid;
+  place-content: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  font-size: 250%;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: all var(--time-step);
+}
+
+a:hover,
+a:focus {
+  color: var(--color-link-hover);
+}
+
+main {
+  display: grid;
+  row-gap: 2em;
+}
+
+header {
+  text-align: center;
+}
+
+#links > ul {
+  list-style-type: none;
+  display: grid;
+  place-content: center;
+  grid-auto-flow: column;
+  column-gap: 1em;
+}

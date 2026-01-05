@@ -1,0 +1,9 @@
+---
+const src = new URL("/count.js", Astro.url).toString();
+---
+
+<script
+  is:inline
+  data-goatcounter="https://stats.murek.dev/count"
+  async
+  src={src}></script>

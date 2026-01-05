@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import GoatCounter from "../components/GoatCounter.astro";
+
+interface Props {
+  title: string | false;
+  siteTitle?: string;
+  description: string;
+  image?: string | URL;
+  article?: {
+    publishedTime: Date;
+    author?: string;
+    tags?: string[];
+  };
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const {
+  title,
+  siteTitle = "Marek Kaput",
+  description,
+  image = "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200",
+  article,
+} = Astro.props;
+
+const lang = Astro.currentLocale || "en";
+
+const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const shortTitle = title || siteTitle;
+
+const hasCustomImage = !!Astro.props.image;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{fullTitle}</title>
+    <meta property="og:title" content={shortTitle} />
+    <meta property="og:site_name" content={siteTitle} />
+    <meta property="twitter:site" content="@jajakobyly" />
+    <meta property="twitter:creator" content="@jajakobyly" />
+    <meta property="og:locale" content={lang} />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={image} />
+    <meta
+      property="twitter:card"
+      content={hasCustomImage ? "summary_large_image" : "summary"}
+    />
+
+    {
+      article && (
+        <>
+          <meta
+            property="article:author"
+            content={article.author || "Marek Kaput"}
+          />
+          <meta
+            property="article:published_time"
+            content={article.publishedTime.toISOString()}
+          />
+          {article.tags?.map((tag) => (
+            <meta property="article:tag" content={tag} />
+          ))}
+        </>
+      )
+    }
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon32.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <meta name="theme-color" content="#6d4c41" />
+
+    <GoatCounter />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
