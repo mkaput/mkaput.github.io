@@ -8,36 +8,44 @@ import RootLayout from "../layouts/RootLayout.astro";
     "Having a great track record of building complex software from nothing " +
     "and establishing development teams working on it."}
 >
-  <main>
-    <header>
-      <h1>Marek Kaput</h1>
+  <main class="grid gap-[2em]">
+    <header class="text-center">
+      <h1 class="text-[2.5em] font-medium">Marek Kaput</h1>
       <p id="occupation">
         Software Engineer at
-        <a href="https://swmansion.com">Software Mansion</a>.
+        <a
+          class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
+          href="https://swmansion.com"
+        >
+          Software Mansion</a
+        >.
       </p>
     </header>
 
     <section id="links">
-      <ul>
+      <ul class="grid list-none place-content-center grid-flow-col gap-x-[1em]">
         <li>
           <a
             href="https://github.com/mkaput"
-            class="externalLink"
-            title="@mkaput">GitHub</a
+            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
+            title="@mkaput"
+            >GitHub</a
           >
         </li>
         <li>
           <a
             href="https://x.com/jajakobyly"
-            class="externalLink"
-            title="@jajakobyly">X</a
+            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
+            title="@jajakobyly"
+            >X</a
           >
         </li>
         <li>
           <a
             href="https://www.linkedin.com/in/mkaput/"
-            class="externalLink"
-            title="LinkedIn Profile">LinkedIn</a
+            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
+            title="LinkedIn Profile"
+            >LinkedIn</a
           >
         </li>
       </ul>
