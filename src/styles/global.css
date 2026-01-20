@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fafafa;
-  --color-text: #212121;
-  --color-link: #795548;
-  --color-link-hover: #ff5722;
-  --color-decor: #6d4c41;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
-    serif;
+  /* https://huemint.com/website-2/ */
+  --color-base-100: light-dark(#fcfcfd, #3f534e);
+  --color-base-200: light-dark(#f5f6f7, #334743);
+  --color-base-300: light-dark(#f9fafb, #233935);
+  --color-base-400: light-dark(#fdfeff, #163731);
+  --color-base-500: light-dark(#dbdcdd, #1b2e2a);
+  --color-base-600: light-dark(#747475, #1a2422);
+  --color-base-content: light-dark(#242320, #e4e3e2);
+  --color-primary: light-dark(#1b815b, #dd3736);
+  --color-primary-content: light-dark(#fdfeff, #1f3631);
+  --color-secondary: light-dark(#cb3447, #86ad3d);
+  --color-secondary-content: light-dark(#fdfeff, #1f3631);
+
+  --font-*: initial;
+  --font-base: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-background: #212121;
-    --color-text: #eeeeee;
-    --color-link: #bcaaa4;
-    --color-link-hover: #ffab91;
-  }
+:root {
+  color-scheme: light dark;
 }
 
 body {
-  @apply m-0 min-h-screen grid place-content-center border-b-[0.5em] border-decor bg-background font-serif text-[1.75rem] font-normal text-text;
+  @apply bg-base-400 text-base-content font-base m-0 min-h-screen text-[1.75rem] font-normal;
 }
