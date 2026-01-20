@@ -15,7 +15,11 @@
   --color-secondary-content: light-dark(#fdfeff, #1f3631);
 
   --font-*: initial;
-  --font-base: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+}
+
+@theme inline {
+  --font-gambarino: var(--font-gambarino);
+  --font-switzer: var(--font-switzer);
 }
 
 :root {
@@ -23,5 +27,9 @@
 }
 
 body {
-  @apply bg-base-400 text-base-content font-base m-0 min-h-screen text-[1.75rem] font-normal;
+  @apply bg-base-400 text-base-content font-switzer m-0 min-h-screen text-[1.75rem] font-normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-gambarino;
 }
