@@ -8,48 +8,59 @@ import Social from "../components/Social.astro";
   description={"Skilled Rustacean and technology polyglot. " +
     "Having a great track record of building complex software from nothing " +
     "and establishing development teams working on it."}
-  bodyClass="grid min-h-screen grid-cols-1 md:grid-cols-2"
+  bodyClass="grid min-h-screen grid-cols-1 xl:grid-cols-2"
 >
-  <header class="bg-base-300 grid content-end gap-12 p-12">
-    <h1 class="font-gambarino text-8xl leading-tight">
-      Hi, my name is <span class="text-primary whitespace-nowrap"
-        >Marek Kaput</span
+  <header class="bg-base-300 flex justify-center xl:justify-end">
+    <div
+      class="grid min-h-[calc(100vh-6rem)] max-w-4xl content-end gap-12 p-12 xl:min-h-screen"
+    >
+      <h1
+        class="font-gambarino text-6xl leading-tight xl:text-7xl 2xl:text-8xl"
       >
-      and I'm a <span class="text-secondary">software engineer</span>
-    </h1>
+        Hi, my name is <span class="text-primary whitespace-nowrap"
+          >Marek Kaput</span
+        >
+        and I'm a <span class="text-secondary">software engineer</span>
+      </h1>
 
-    <p id="occupation" class="text-base-subcontent font-light">
-      I'm deeply passionate about creating products, bridging experiences across
-      vastly different domains, and building teams. Over the past decade I've
-      been a senior engineer at
-      <a class="link" href="https://swmansion.com">Software Mansion</a>. As a
-      technology polyglot, I appreciate the power of Rust, Elixir, and agentic
-      coding. I am also present in the
-      <a class="link" href="https://github.com/mkaput">open-source</a> space.
-    </p>
+      <p id="occupation" class="text-base-subcontent font-light">
+        I'm deeply passionate about creating products, bridging experiences
+        across vastly different domains, and building teams. Over the past
+        decade I've been a senior engineer at
+        <a class="link" href="https://swmansion.com">Software Mansion</a>. As a
+        technology polyglot, I appreciate the power of Rust, Elixir, and agentic
+        coding. I am also present in the
+        <a class="link" href="https://github.com/mkaput">open-source</a> space.
+      </p>
 
-    <ul id="socials" class="flex list-none justify-end gap-4">
-      <li>
-        <Social
-          service="github"
-          handle="@mkaput"
-          url="https://github.com/mkaput"
-        />
-      </li>
-      <li>
-        <Social
-          service="x"
-          handle="@jajakobyly"
-          url="https://x.com/jajakobyly"
-        />
-      </li>
-      <li>
-        <Social service="linkedin" url="https://www.linkedin.com/in/mkaput/" />
-      </li>
-    </ul>
+      <ul id="socials" class="flex list-none justify-end gap-4">
+        <li>
+          <Social
+            service="github"
+            handle="@mkaput"
+            url="https://github.com/mkaput"
+          />
+        </li>
+        <li>
+          <Social
+            service="x"
+            handle="@jajakobyly"
+            url="https://x.com/jajakobyly"
+          />
+        </li>
+        <li>
+          <Social
+            service="linkedin"
+            url="https://www.linkedin.com/in/mkaput/"
+          />
+        </li>
+      </ul>
+    </div>
   </header>
 
-  <section class="bg-base-500 flex items-center justify-center p-12">
+  <section
+    class="bg-base-500 bg-dashed-fade-grid relative flex items-center justify-center p-12"
+  >
     <p class="text-base-subcontent font-bold">
       My content will be listed here soon...
     </p>

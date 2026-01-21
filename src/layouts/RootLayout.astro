@@ -87,7 +87,7 @@ const hasCustomImage = !!Astro.props.image;
 
     <GoatCounter />
   </head>
-  <body class={bodyClass}>
+  <body class:list={["@container", bodyClass]}>
     <slot />
   </body>
 </html>

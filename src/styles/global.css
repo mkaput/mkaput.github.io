@@ -7,7 +7,7 @@
   --color-base-200: light-dark(#f5f6f7, #334743);
   --color-base-300: light-dark(#f9fafb, #233935);
   --color-base-400: light-dark(#fdfeff, #163731);
-  --color-base-500: light-dark(#dbdcdd, #1b2e2a);
+  --color-base-500: light-dark(#dbdcdd, #1B2F2A);
   --color-base-600: light-dark(#747475, #1a2422);
   --color-base-content: light-dark(#242320, #e4e3e2);
   --color-primary: light-dark(#cb3447, #dd3736);
@@ -66,6 +66,61 @@
       color: color-mix(in oklab, var(--color-secondary) 80%, #000);
     }
   }
+
+  .bg-dashed-fade-grid {
+    isolation: isolate;
+    position: relative;
+    --grid-line-color: color-mix(in oklab, var(--color-base-500) 90%, #000);
+  }
+
+  .bg-dashed-fade-grid::before {
+    background-image: linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 0;
+    content: "";
+    inset: 0;
+    mask-image: repeating-linear-gradient(
+      to right,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    radial-gradient(ellipse 80% 80% at 100% 100%, #000 50%, transparent 90%);
+    mask-composite: intersect;
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
+    -webkit-mask-image: repeating-linear-gradient(
+      to right,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      black 0px,
+      black 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    radial-gradient(ellipse 80% 80% at 100% 100%, #000 50%, transparent 90%);
+    -webkit-mask-composite: source-in;
+  }
+
+  .bg-dashed-fade-grid > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 :root {
@@ -73,5 +128,5 @@
 }
 
 body {
-  @apply bg-base-400 text-base-content font-switzer m-0 min-h-screen text-[1.75rem] font-normal;
+  @apply bg-base-400 text-base-content font-switzer m-0 min-h-screen text-3xl font-normal;
 }
