@@ -2,6 +2,7 @@
 
 @theme {
   /* https://huemint.com/website-2/ */
+  --color-*: initial;
   --color-base-100: light-dark(#fcfcfd, #3f534e);
   --color-base-200: light-dark(#f5f6f7, #334743);
   --color-base-300: light-dark(#f9fafb, #233935);
@@ -9,17 +10,62 @@
   --color-base-500: light-dark(#dbdcdd, #1b2e2a);
   --color-base-600: light-dark(#747475, #1a2422);
   --color-base-content: light-dark(#242320, #e4e3e2);
-  --color-primary: light-dark(#1b815b, #dd3736);
+  --color-primary: light-dark(#cb3447, #dd3736);
   --color-primary-content: light-dark(#fdfeff, #1f3631);
-  --color-secondary: light-dark(#cb3447, #86ad3d);
+  --color-secondary: light-dark(#1b815b, #86ad3d);
   --color-secondary-content: light-dark(#fdfeff, #1f3631);
 
   --font-*: initial;
 }
 
 @theme inline {
+  --color-base-subcontent: color-mix(
+    in oklab,
+    var(--color-base-content),
+    transparent 50%
+  );
+
   --font-gambarino: var(--font-gambarino);
   --font-switzer: var(--font-switzer);
+}
+
+@layer utilities {
+  .link {
+    @apply cursor-pointer underline;
+  }
+
+  .link:focus {
+    @apply outline-hidden;
+  }
+
+  .link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .link-hover {
+    @apply no-underline hover:underline;
+  }
+
+  .link-primary {
+    @apply text-primary;
+  }
+
+  @media (hover: hover) {
+    .link-primary:hover {
+      color: color-mix(in oklab, var(--color-primary) 80%, #000);
+    }
+  }
+
+  .link-secondary {
+    @apply text-secondary;
+  }
+
+  @media (hover: hover) {
+    .link-secondary:hover {
+      color: color-mix(in oklab, var(--color-secondary) 80%, #000);
+    }
+  }
 }
 
 :root {
@@ -28,8 +74,4 @@
 
 body {
   @apply bg-base-400 text-base-content font-switzer m-0 min-h-screen text-[1.75rem] font-normal;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply font-gambarino;
 }

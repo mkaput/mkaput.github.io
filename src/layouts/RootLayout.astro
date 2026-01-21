@@ -2,6 +2,7 @@
 import { Font } from "astro:assets";
 import GoatCounter from "../components/GoatCounter.astro";
 import "../styles/global.css";
+import { HTMLAttributes } from "astro/types";
 
 interface Props {
   title: string | false;
@@ -13,6 +14,7 @@ interface Props {
     author?: string;
     tags?: string[];
   };
+  bodyClass?: HTMLAttributes<"body">["class"];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -23,6 +25,7 @@ const {
   description,
   image = "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200",
   article,
+  bodyClass,
 } = Astro.props;
 
 const lang = Astro.currentLocale || "en";
@@ -80,11 +83,11 @@ const hasCustomImage = !!Astro.props.image;
     <meta name="theme-color" content="#6d4c41" />
 
     <Font cssVariable="--font-gambarino" />
-    <Font cssVariable="--font-switzer" preload />
+    <Font cssVariable="--font-switzer" preload={true} />
 
     <GoatCounter />
   </head>
-  <body>
+  <body class={bodyClass}>
     <slot />
   </body>
 </html>

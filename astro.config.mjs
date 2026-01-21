@@ -34,6 +34,7 @@ export default defineConfig({
           "sans-serif",
         ],
         provider: fontProviders.fontshare(),
+        weights: ["100 900"],
       },
     ],
   },

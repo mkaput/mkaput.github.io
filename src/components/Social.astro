@@ -1,0 +1,42 @@
+---
+import GitHubIcon from "../assets/icons/github.svg";
+import XIcon from "../assets/icons/x.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+
+type Service = keyof typeof services;
+
+interface Props {
+  service: Service;
+  handle?: string;
+  url: string;
+}
+
+const services = {
+  github: {
+    label: "GitHub",
+    Icon: GitHubIcon
+  },
+  x: {
+    label: "X",
+    Icon: XIcon
+  },
+  linkedin: {
+    label: "LinkedIn",
+    Icon: LinkedInIcon
+  }
+} as const;
+
+const { handle, url } = Astro.props;
+const { label, Icon } = services[Astro.props.service];
+const title = handle ? `${handle} on ${label}` : `Follow me on ${label}`;
+---
+
+<a
+  href={url}
+  class="link link-hover text-base-content hover:text-secondary inline-flex"
+  title={title}
+  aria-label={title}
+>
+  <Icon class="size-6" style="fill: currentColor" aria-hidden="true" />
+  <span class="sr-only">{title}</span>
+</a>

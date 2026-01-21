@@ -1,5 +1,6 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
+import Social from "../components/Social.astro";
 ---
 
 <RootLayout
@@ -7,48 +8,50 @@ import RootLayout from "../layouts/RootLayout.astro";
   description={"Skilled Rustacean and technology polyglot. " +
     "Having a great track record of building complex software from nothing " +
     "and establishing development teams working on it."}
+  bodyClass="grid min-h-screen grid-cols-1 md:grid-cols-2"
 >
-  <main class="grid gap-[2em]">
-    <header class="text-center">
-      <h1 class="text-[2.5em] font-medium">Marek Kaput</h1>
-      <p id="occupation">
-        Software Engineer at
-        <a
-          class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
-          href="https://swmansion.com"
-        >
-          Software Mansion</a
-        >.
-      </p>
-    </header>
+  <header class="bg-base-300 grid content-end gap-12 p-12">
+    <h1 class="font-gambarino text-8xl leading-tight">
+      Hi, my name is <span class="text-primary whitespace-nowrap"
+        >Marek Kaput</span
+      >
+      and I'm a <span class="text-secondary">software engineer</span>
+    </h1>
 
-    <section id="links">
-      <ul class="grid list-none place-content-center grid-flow-col gap-x-[1em]">
-        <li>
-          <a
-            href="https://github.com/mkaput"
-            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
-            title="@mkaput"
-            >GitHub</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://x.com/jajakobyly"
-            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
-            title="@jajakobyly"
-            >X</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/mkaput/"
-            class="text-link no-underline transition-colors duration-100 hover:text-link-hover focus:text-link-hover"
-            title="LinkedIn Profile"
-            >LinkedIn</a
-          >
-        </li>
-      </ul>
-    </section>
-  </main>
+    <p id="occupation" class="text-base-subcontent font-light">
+      I'm deeply passionate about creating products, bridging experiences across
+      vastly different domains, and building teams. Over the past decade I've
+      been a senior engineer at
+      <a class="link" href="https://swmansion.com">Software Mansion</a>. As a
+      technology polyglot, I appreciate the power of Rust, Elixir, and agentic
+      coding. I am also present in the
+      <a class="link" href="https://github.com/mkaput">open-source</a> space.
+    </p>
+
+    <ul id="socials" class="flex list-none justify-end gap-4">
+      <li>
+        <Social
+          service="github"
+          handle="@mkaput"
+          url="https://github.com/mkaput"
+        />
+      </li>
+      <li>
+        <Social
+          service="x"
+          handle="@jajakobyly"
+          url="https://x.com/jajakobyly"
+        />
+      </li>
+      <li>
+        <Social service="linkedin" url="https://www.linkedin.com/in/mkaput/" />
+      </li>
+    </ul>
+  </header>
+
+  <section class="bg-base-500 flex items-center justify-center p-12">
+    <p class="text-base-subcontent font-bold">
+      My content will be listed here soon...
+    </p>
+  </section>
 </RootLayout>
