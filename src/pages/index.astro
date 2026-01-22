@@ -67,8 +67,10 @@ const posts = [...externalPosts].sort(
     </div>
   </header>
 
-  <section class="bg-base-500 bg-dashed-fade-grid p-12">
-    <ul class="flex w-full max-w-3xl flex-col gap-10">
+  <section
+    class="bg-base-500 bg-dashed-fade-grid flex justify-center xl:justify-start"
+  >
+    <ul class="flex w-full max-w-4xl flex-col gap-10 p-12">
       {
         posts.map((post) => {
           const isExternal = Boolean(post.service);
