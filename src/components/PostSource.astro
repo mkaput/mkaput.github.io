@@ -1,0 +1,14 @@
+---
+import { services, type Service } from "../lib/services";
+
+interface Props {
+  service: Service;
+}
+
+const { label, Icon } = services[Astro.props.service];
+---
+
+<span aria-label={label}>
+  <Icon class="h-3 w-auto" style="fill: currentColor" aria-hidden="true" />
+  <span class="sr-only">{label}</span>
+</span>

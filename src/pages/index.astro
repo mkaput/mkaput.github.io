@@ -1,6 +1,17 @@
 ---
 import RootLayout from "../layouts/RootLayout.astro";
 import Social from "../components/Social.astro";
+import PostSource from "../components/PostSource.astro";
+import Date from "../components/Date.astro";
+import NewScreenIcon from "../assets/icons/newscreen.svg";
+import { getCollection } from "astro:content";
+
+const externalEntries = await getCollection("external");
+const externalPosts = externalEntries.flatMap((entry) => entry.data);
+
+const posts = [...externalPosts].sort(
+  (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
+);
 ---
 
 <RootLayout
@@ -56,11 +67,44 @@ import Social from "../components/Social.astro";
     </div>
   </header>
 
-  <section
-    class="bg-base-500 bg-dashed-fade-grid relative flex items-center justify-center p-12"
-  >
-    <p class="text-base-subcontent font-bold">
-      My content will be listed here soon...
-    </p>
+  <section class="bg-base-500 bg-dashed-fade-grid p-12">
+    <ul class="flex w-full max-w-3xl flex-col gap-10">
+      {
+        posts.map((post) => {
+          const isExternal = Boolean(post.service);
+
+          return (
+            <li class="flex flex-col">
+              <div class="flex items-baseline justify-between">
+                <Date
+                  date={post.publishedAt}
+                  class="text-base-subcontent text-sm uppercase"
+                />
+                {isExternal ? (
+                  <div class="text-base-subcontent flex items-start gap-0.5">
+                    <PostSource service={post.service} />
+                    <NewScreenIcon
+                      class="text-base-subcontent size-2"
+                      aria-hidden="true"
+                    />
+                  </div>
+                ) : null}
+              </div>
+              <a
+                class="text-base-content link-hover inline-flex items-center gap-3"
+                href={post.url}
+              >
+                <h2 class="font-gambarino text-3xl leading-tight">
+                  {post.title}
+                </h2>
+              </a>
+              <p class="text-base-subcontent mt-3 text-lg">
+                {post.description}
+              </p>
+            </li>
+          );
+        })
+      }
+    </ul>
   </section>
 </RootLayout>

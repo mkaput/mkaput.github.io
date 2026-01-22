@@ -12,6 +12,7 @@ Stack: Bun, Astro, TailwindCSS, GitHub Pages; KISS.
   them in a browser (use `agent-browser` skill)
 - use `ios-simulator` skill when tasked to debug website on iOS; just open
   http://localhost:4321 in Safari inside the simulator and do inspections
+- use `size-N` instead of `w-N h-N`
 
 ## Tools
 

@@ -1,0 +1,6 @@
+# External writing that lives off-site (Medium, X, etc.). Newest first.
+- service: swmansion
+  title: Say hello to Scarb, a Cairo package manager
+  description: Announcing the first alpha release of Scarb, a build toolchain and package manager for Cairo projects.
+  url: https://blog.swmansion.com/say-hello-to-scarb-a-cairo-1-0-package-manager-782b0321f82f
+  publishedAt: "2023-01-24T13:35:18.732Z"

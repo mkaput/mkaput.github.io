@@ -1,30 +1,11 @@
 ---
-import GitHubIcon from "../assets/icons/github.svg";
-import XIcon from "../assets/icons/x.svg";
-import LinkedInIcon from "../assets/icons/linkedin.svg";
-
-type Service = keyof typeof services;
+import { services, type Service } from "../lib/services";
 
 interface Props {
   service: Service;
   handle?: string;
   url: string;
 }
-
-const services = {
-  github: {
-    label: "GitHub",
-    Icon: GitHubIcon,
-  },
-  x: {
-    label: "X",
-    Icon: XIcon,
-  },
-  linkedin: {
-    label: "LinkedIn",
-    Icon: LinkedInIcon,
-  },
-} as const;
 
 const { handle, url } = Astro.props;
 const { label, Icon } = services[Astro.props.service];
