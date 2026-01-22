@@ -1,6 +1,21 @@
 # External writing that lives off-site (Medium, X, etc.). Newest first.
+- service: x
+  title: Building a Kotlin Multiplatform team at Software Mansion
+  description: Announcing a Kotlin Multiplatform effort that I kicked off with my team.
+  url: https://x.com/jajakobyly/status/1973064353231286733
+  publishedAt: "2025-09-30T16:36:14.230Z"
+- service: x
+  title: "Introducing Ma'at: regression testing for Cairo releases"
+  description: Launching a system to test upcoming Cairo releases across real-world codebases.
+  url: https://x.com/jajakobyly/status/1922316534195638738
+  publishedAt: "2025-05-13T15:42:31.323Z"
+- service: x
+  title: Cairo Compiler Contributor Workshop
+  description: I made a workshop to help future Cairo compiler contributors get started.
+  url: https://x.com/jajakobyly/status/1821176486704877830
+  publishedAt: "2024-08-07T13:28:04.910Z"
 - service: swmansion
   title: Say hello to Scarb, a Cairo package manager
-  description: Announcing the first alpha release of Scarb, a build toolchain and package manager for Cairo projects.
+  description: Announcing the first alpha release of Scarb, a build toolchain and package manager for Cairo.
   url: https://blog.swmansion.com/say-hello-to-scarb-a-cairo-1-0-package-manager-782b0321f82f
   publishedAt: "2023-01-24T13:35:18.732Z"
