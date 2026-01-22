@@ -9,7 +9,7 @@ Stack: Bun, Astro, TailwindCSS, GitHub Pages; KISS.
   conflicts but avoid commiting changes made by others
 - we target the latest Chrome and latest Safari / iOS Safari
 - if changing some part of the website, make sure changes work by inspecting
-  them in a browser (use `chrome-devtools` mcp)
+  them in a browser (use `agent-browser` skill)
 - use `ios-simulator` skill when tasked to debug website on iOS; just open
   http://localhost:4321 in Safari inside the simulator and do inspections
 
