@@ -67,65 +67,6 @@
     }
   }
 
-  .bg-dashed-fade-grid {
-    isolation: isolate;
-    position: relative;
-    --grid-line-color: color-mix(in oklab, var(--color-base-500) 90%, #000);
-  }
-
-  .bg-dashed-fade-grid::before {
-    background-image:
-      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position:
-      0 0,
-      0 0;
-    content: "";
-    inset: 0;
-    mask-image:
-      repeating-linear-gradient(
-        to right,
-        black 0px,
-        black 3px,
-        transparent 3px,
-        transparent 8px
-      ),
-      repeating-linear-gradient(
-        to bottom,
-        black 0px,
-        black 3px,
-        transparent 3px,
-        transparent 8px
-      ),
-      radial-gradient(ellipse 80% 80% at 100% 100%, #000 50%, transparent 90%);
-    mask-composite: intersect;
-    pointer-events: none;
-    position: absolute;
-    z-index: 0;
-    -webkit-mask-image:
-      repeating-linear-gradient(
-        to right,
-        black 0px,
-        black 3px,
-        transparent 3px,
-        transparent 8px
-      ),
-      repeating-linear-gradient(
-        to bottom,
-        black 0px,
-        black 3px,
-        transparent 3px,
-        transparent 8px
-      ),
-      radial-gradient(ellipse 80% 80% at 100% 100%, #000 50%, transparent 90%);
-    -webkit-mask-composite: source-in;
-  }
-
-  .bg-dashed-fade-grid > * {
-    position: relative;
-    z-index: 1;
-  }
 }
 
 :root {
