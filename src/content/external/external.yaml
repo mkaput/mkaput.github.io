@@ -1,4 +1,15 @@
-# External writing that lives off-site (Medium, X, etc.). Newest first.
+# External writing or off-site mentions (Medium, X, GitHub, etc.). Newest first.
+# Descriptions should highlight impact when the entry is a work showcase rather than a writing.
+- service: github
+  title: Expert Language Server
+  description: I initiated Software Mansion's investment in Expert and provide technical leadership for our developers contributing to it.
+  url: https://github.com/elixir-lang/expert
+  publishedAt: "2026-01-12T00:00:00.000Z"
+- service: swmansion
+  title: Cairo Oracles
+  description: I formulated an oracle pattern in the Cairo language and shipped a full implementation as part of Scarb.
+  url: https://docs.swmansion.com/scarb/docs/extensions/oracles/overview.html
+  publishedAt: "2025-10-14T11:38:00.000Z"
 - service: x
   title: Building a Kotlin Multiplatform team at Software Mansion
   description: Announcing a Kotlin Multiplatform effort that I kicked off with my team.
@@ -14,6 +25,11 @@
   description: I made a workshop to help future Cairo compiler contributors get started.
   url: https://x.com/jajakobyly/status/1821176486704877830
   publishedAt: "2024-08-07T13:28:04.910Z"
+- service: github
+  title: CairoLS
+  description: I took over Cairo Language Server, rearchitected it around modern LSP design, and grew it from zero adoption and zero engineers into a thriving user base and a team of 6.
+  url: https://github.com/software-mansion/cairols
+  publishedAt: "2024-02-13T00:00:00.000Z"
 - service: swmansion
   title: Say hello to Scarb, a Cairo package manager
   description: Announcing the first alpha release of Scarb, a build toolchain and package manager for Cairo.
