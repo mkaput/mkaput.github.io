@@ -9,9 +9,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "3.7.0",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6"
+    "astro": "5.17.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
