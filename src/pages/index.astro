@@ -4,6 +4,8 @@ import Social from "../components/Social.astro";
 import PostSource from "../components/PostSource.astro";
 import Date from "../components/Date.astro";
 import NewScreenIcon from "../assets/icons/newscreen.svg";
+import blackHoleMp4 from "../assets/black-hole.mp4";
+import blackHoleWebm from "../assets/black-hole.webm";
 import { getCollection } from "astro:content";
 
 const externalEntries = await getCollection("external");
@@ -21,9 +23,24 @@ const posts = [...externalPosts].sort(
     "and establishing development teams working on it."}
   bodyClass="grid min-h-screen grid-cols-1 xl:grid-cols-2 bg-base-300"
 >
-  <header class="bg-base-300 flex justify-center xl:justify-end">
+  <header
+    class="bg-base-300 relative isolate flex justify-center overflow-hidden xl:justify-end"
+  >
+    <div class="pointer-events-none absolute inset-0">
+      <video
+        class="size-full object-cover opacity-10 mix-blend-multiply dark:opacity-20"
+        autoplay
+        muted
+        playsinline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src={blackHoleMp4} type="video/mp4" />
+        <source src={blackHoleWebm} type="video/webm" />
+      </video>
+    </div>
     <div
-      class="grid min-h-[calc(100vh-6rem)] max-w-4xl content-end gap-12 p-12 xl:min-h-screen"
+      class="relative z-10 grid min-h-[calc(100vh-6rem)] max-w-4xl content-end gap-12 p-12 xl:min-h-screen"
     >
       <h1
         class="font-gambarino text-6xl leading-tight xl:text-7xl 2xl:text-8xl"
@@ -67,9 +84,7 @@ const posts = [...externalPosts].sort(
     </div>
   </header>
 
-  <section
-    class="bg-base-500 flex justify-center xl:justify-start"
-  >
+  <section class="bg-base-500 flex justify-center xl:justify-start">
     <ul class="flex w-full max-w-4xl flex-col gap-10 p-12">
       {
         posts.map((post) => {
