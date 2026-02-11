@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { class: className } = Astro.props;
+const rssUrl = new URL("rss.xml", Astro.site);
 ---
 
 <ul class:list={["flex list-none justify-end gap-4", className]}>
@@ -17,5 +18,8 @@ const { class: className } = Astro.props;
   </li>
   <li>
     <Social service="linkedin" url="https://www.linkedin.com/in/mkaput/" />
+  </li>
+  <li>
+    <Social service="rss" url={rssUrl.toString()} />
   </li>
 </ul>

@@ -2,6 +2,7 @@ import GitHubIcon from "../assets/icons/github.svg";
 import XIcon from "../assets/icons/x.svg";
 import LinkedInIcon from "../assets/icons/linkedin.svg";
 import SwmansionIcon from "../assets/icons/swmansion.svg";
+import RssIcon from "../assets/icons/rss.svg";
 
 export type Service = keyof typeof services;
 
@@ -21,6 +22,10 @@ export const services = {
   swmansion: {
     label: "Software Mansion Blog",
     Icon: SwmansionIcon,
+  },
+  rss: {
+    label: "RSS",
+    Icon: RssIcon,
   },
 } as const;
 

@@ -18,6 +18,7 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const rssURL = new URL("rss.xml", Astro.site);
 
 const {
   title,
@@ -79,6 +80,12 @@ const hasCustomImage = !!Astro.props.image;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon32.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={siteTitle}
+      href={rssURL}
+    />
 
     <meta name="theme-color" content="#233935" />
 
