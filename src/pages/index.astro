@@ -3,6 +3,7 @@ import RootLayout from "../layouts/RootLayout.astro";
 import Social from "../components/Social.astro";
 import PostSource from "../components/PostSource.astro";
 import Date from "../components/Date.astro";
+import Footer from "../components/Footer.astro";
 import NewScreenIcon from "../assets/icons/newscreen.svg";
 import blackHoleMp4 from "../assets/black-hole.mp4";
 import blackHoleWebm from "../assets/black-hole.webm";
@@ -85,19 +86,17 @@ const posts = [...externalPosts].sort(
   </header>
 
   <section class="bg-base-500 flex justify-center xl:justify-start">
-    <ul class="flex w-full max-w-4xl flex-col gap-10 p-12">
-      {
-        posts.map((post) => {
-          const isExternal = Boolean(post.service);
-
-          return (
+    <div class="flex min-h-screen w-full max-w-4xl flex-col gap-10 p-12">
+      <ul class="flex flex-col gap-10">
+        {
+          posts.map((post) => (
             <li class="flex flex-col">
               <div class="flex items-baseline justify-between">
                 <Date
                   date={post.publishedAt}
                   class="text-base-subcontent text-sm uppercase"
                 />
-                {isExternal ? (
+                {post.service ? (
                   <div class="text-base-subcontent flex items-start gap-0.5">
                     <PostSource service={post.service} />
                     <NewScreenIcon
@@ -119,9 +118,10 @@ const posts = [...externalPosts].sort(
                 {post.description}
               </p>
             </li>
-          );
-        })
-      }
-    </ul>
+          ))
+        }
+      </ul>
+      <Footer class="mt-auto" />
+    </div>
   </section>
 </RootLayout>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer class:list={["text-base-subcontent text-center text-xs", className]}>
+  <p>
+    © 2026 by Marek Kaput. Content licensed under
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="link"
+      >CC BY-SA 4.0</a
+    >
+  </p>
+</footer>
