@@ -7,14 +7,9 @@ import Footer from "../components/Footer.astro";
 import NewScreenIcon from "../assets/icons/newscreen.svg";
 import blackHoleMp4 from "../assets/black-hole.mp4";
 import blackHoleWebm from "../assets/black-hole.webm";
-import { getCollection } from "astro:content";
+import { getUnifiedPosts } from "../lib/posts";
 
-const externalEntries = await getCollection("external");
-const externalPosts = externalEntries.flatMap((entry) => entry.data);
-
-const posts = [...externalPosts].sort(
-  (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
-);
+const posts = await getUnifiedPosts();
 ---
 
 <RootLayout
@@ -75,7 +70,7 @@ const posts = [...externalPosts].sort(
                   date={post.publishedAt}
                   class="text-base-subcontent text-sm uppercase"
                 />
-                {post.service ? (
+                {post.isExternal ? (
                   <div class="text-base-subcontent flex items-start gap-0.5">
                     <PostSource service={post.service} />
                     <NewScreenIcon
