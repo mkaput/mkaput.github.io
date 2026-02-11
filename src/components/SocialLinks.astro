@@ -1,0 +1,21 @@
+---
+import Social from "./Social.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<ul class:list={["flex list-none justify-end gap-4", className]}>
+  <li>
+    <Social service="github" handle="@mkaput" url="https://github.com/mkaput" />
+  </li>
+  <li>
+    <Social service="x" handle="@jajakobyly" url="https://x.com/jajakobyly" />
+  </li>
+  <li>
+    <Social service="linkedin" url="https://www.linkedin.com/in/mkaput/" />
+  </li>
+</ul>
