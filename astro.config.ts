@@ -1,10 +1,18 @@
 import { defineConfig, fontProviders } from "astro/config";
+import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import remarkReadingTime from "./src/remark-reading-time";
+import remarkModifiedTime from "./src/remark-modified-time";
 
 export default defineConfig({
   site: "https://murek.dev",
-  integrations: [sitemap()],
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkReadingTime, remarkModifiedTime],
+    }),
+    sitemap(),
+  ],
   experimental: {
     fonts: [
       {
