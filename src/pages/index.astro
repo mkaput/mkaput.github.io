@@ -10,10 +10,43 @@ import blackHoleWebm from "../assets/black-hole.webm";
 import { getUnifiedPosts } from "../lib/posts";
 
 const posts = await getUnifiedPosts();
+const websiteUrl = Astro.site?.toString() || "https://murek.dev";
+const personUrl = `${websiteUrl}#marek-kaput`;
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${websiteUrl}#website`,
+      url: websiteUrl,
+      name: "Marek Kaput",
+      description:
+        "Skilled Rustacean and technology polyglot building complex software and teams.",
+      inLanguage: "en",
+      publisher: {
+        "@id": personUrl,
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": personUrl,
+      name: "Marek Kaput",
+      url: websiteUrl,
+      jobTitle: "Software Engineer",
+      sameAs: [
+        "https://github.com/mkaput",
+        "https://x.com/jajakobyly",
+        "https://www.linkedin.com/in/marek-kaput/",
+      ],
+      knowsAbout: ["Rust", "Elixir", "Agentic coding", "Software architecture"],
+    },
+  ],
+};
 ---
 
 <RootLayout
   title={false}
+  jsonLd={websiteJsonLd}
   description={"Skilled Rustacean and technology polyglot. " +
     "Having a great track record of building complex software from nothing " +
     "and establishing development teams working on it."}
