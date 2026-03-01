@@ -10,35 +10,116 @@ import blackHoleWebm from "../assets/black-hole.webm";
 import { getUnifiedPosts } from "../lib/posts";
 
 const posts = await getUnifiedPosts();
-const websiteUrl = Astro.site?.toString() || "https://murek.dev";
-const personUrl = `${websiteUrl}#marek-kaput`;
+
+const githubProfileUrl = "https://github.com/mkaput";
+const linkedInProfileUrl = "https://www.linkedin.com/in/marek-kaput/";
+const xProfileUrl = "https://x.com/jajakobyly";
+
+const websiteUrl = new URL(
+  "/",
+  Astro.site?.toString() ?? "https://murek.dev",
+).toString();
+const websiteId = `${websiteUrl}#website`;
+const profilePageId = `${websiteUrl}#profilepage`;
+const personId = `${websiteUrl}#person`;
+const organizationId = `${websiteUrl}#organization`;
+const avatarId = `${websiteUrl}#avatar`;
+
+const githubProfile = await fetch("https://api.github.com/users/mkaput")
+  .then(async (response) => {
+    if (!response.ok) {
+      return null;
+    }
+
+    return (await response.json()) as {
+      avatar_url?: string;
+      name?: string;
+      location?: string;
+    };
+  })
+  .catch(() => null);
+
+const fullName = githubProfile?.name || "Marek Kaput";
+const avatarUrl =
+  githubProfile?.avatar_url ||
+  "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200";
+const location = githubProfile?.location || "Kraków, Poland";
+const addressLocality = location.split(",")[0]?.trim() || "Kraków";
+const organizationName = "Software Mansion";
+const organizationUrl = "https://swmansion.com";
+
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": `${websiteUrl}#website`,
+      "@id": websiteId,
       url: websiteUrl,
-      name: "Marek Kaput",
-      description:
-        "Skilled Rustacean and technology polyglot building complex software and teams.",
+      name: fullName,
       inLanguage: "en",
-      publisher: {
-        "@id": personUrl,
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": profilePageId,
+      url: websiteUrl,
+      name: `${fullName} | Software Engineer`,
+      inLanguage: "en",
+      isPartOf: {
+        "@id": websiteId,
+      },
+      about: {
+        "@id": personId,
+      },
+      primaryImageOfPage: {
+        "@id": avatarId,
       },
     },
     {
       "@type": "Person",
-      "@id": personUrl,
-      name: "Marek Kaput",
+      "@id": personId,
+      name: fullName,
       url: websiteUrl,
-      jobTitle: "Software Engineer",
-      sameAs: [
-        "https://github.com/mkaput",
-        "https://x.com/jajakobyly",
-        "https://www.linkedin.com/in/marek-kaput/",
+      image: {
+        "@id": avatarId,
+      },
+      jobTitle: "Senior Software Engineer",
+      description:
+        "Senior software engineer focused on Rust, distributed systems, compiler and developer tooling, and AI-powered agentic engineering.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality,
+        addressCountry: "PL",
+      },
+      sameAs: [githubProfileUrl, linkedInProfileUrl, xProfileUrl],
+      worksFor: {
+        "@id": organizationId,
+      },
+      knowsAbout: [
+        "Rust",
+        "Distributed systems",
+        "Compilers",
+        "Developer tooling",
+        "Elixir",
+        "Systems architecture",
+        "AI engineering",
+        "Agentic workflows",
       ],
-      knowsAbout: ["Rust", "Elixir", "Agentic coding", "Software architecture"],
+      mainEntityOfPage: {
+        "@id": profilePageId,
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: organizationName,
+      url: organizationUrl,
+    },
+    {
+      "@type": "ImageObject",
+      "@id": avatarId,
+      url: avatarUrl,
+      contentUrl: avatarUrl,
+      caption: fullName,
     },
   ],
 };
