@@ -10,10 +10,92 @@ import blackHoleWebm from "../assets/black-hole.webm";
 import { getUnifiedPosts } from "../lib/posts";
 
 const posts = await getUnifiedPosts();
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${Astro.site!}#website`,
+      url: Astro.site!,
+      name: "Marek Kaput",
+      inLanguage: "en",
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${Astro.site!}#profilepage`,
+      url: Astro.site!,
+      name: "Marek Kaput | Software Engineer",
+      inLanguage: "en",
+      isPartOf: {
+        "@id": `${Astro.site!}#website`,
+      },
+      about: {
+        "@id": `${Astro.site!}#person`,
+      },
+      primaryImageOfPage: {
+        "@id": `${Astro.site!}#avatar`,
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": `${Astro.site!}#person`,
+      name: "Marek Kaput",
+      url: Astro.site!,
+      image: {
+        "@id": `${Astro.site!}#avatar`,
+      },
+      jobTitle: "Senior Software Engineer",
+      description:
+        "Senior software engineer focused on Rust, distributed systems, compiler and developer tooling, and AI-powered agentic engineering.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Kraków",
+        addressCountry: "PL",
+      },
+      sameAs: [
+        "https://github.com/mkaput",
+        "https://www.linkedin.com/in/marek-kaput/",
+        "https://x.com/jajakobyly",
+      ],
+      worksFor: {
+        "@id": `${Astro.site!}#organization`,
+      },
+      knowsAbout: [
+        "Rust",
+        "Distributed systems",
+        "Compilers",
+        "Developer tooling",
+        "Elixir",
+        "Systems architecture",
+        "AI engineering",
+        "Agentic workflows",
+      ],
+      mainEntityOfPage: {
+        "@id": `${Astro.site!}#profilepage`,
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${Astro.site!}#organization`,
+      name: "Software Mansion",
+      url: "https://swmansion.com",
+    },
+    {
+      "@type": "ImageObject",
+      "@id": `${Astro.site!}#avatar`,
+      url: "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200",
+      contentUrl:
+        "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200",
+      caption: "Marek Kaput",
+    },
+  ],
+};
 ---
 
 <RootLayout
   title={false}
+  jsonLd={websiteJsonLd}
   description={"Skilled Rustacean and technology polyglot. " +
     "Having a great track record of building complex software from nothing " +
     "and establishing development teams working on it."}
