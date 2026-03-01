@@ -15,36 +15,17 @@ const githubProfileUrl = "https://github.com/mkaput";
 const linkedInProfileUrl = "https://www.linkedin.com/in/marek-kaput/";
 const xProfileUrl = "https://x.com/jajakobyly";
 
-const websiteUrl = new URL(
-  "/",
-  Astro.site?.toString() ?? "https://murek.dev",
-).toString();
+const websiteUrl = Astro.site!;
 const websiteId = `${websiteUrl}#website`;
 const profilePageId = `${websiteUrl}#profilepage`;
 const personId = `${websiteUrl}#person`;
 const organizationId = `${websiteUrl}#organization`;
 const avatarId = `${websiteUrl}#avatar`;
 
-const githubProfile = await fetch("https://api.github.com/users/mkaput")
-  .then(async (response) => {
-    if (!response.ok) {
-      return null;
-    }
-
-    return (await response.json()) as {
-      avatar_url?: string;
-      name?: string;
-      location?: string;
-    };
-  })
-  .catch(() => null);
-
-const fullName = githubProfile?.name || "Marek Kaput";
+const fullName = "Marek Kaput";
 const avatarUrl =
-  githubProfile?.avatar_url ||
   "https://www.gravatar.com/avatar/28368724d65db3b992c4a2f44c7b4bae71f72c6b03f35c921a4d96846f768ebd?s=1200";
-const location = githubProfile?.location || "Kraków, Poland";
-const addressLocality = location.split(",")[0]?.trim() || "Kraków";
+const addressLocality = "Kraków";
 const organizationName = "Software Mansion";
 const organizationUrl = "https://swmansion.com";
 
