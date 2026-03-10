@@ -39,7 +39,7 @@ export const getUnifiedPosts = async (): Promise<UnifiedPost[]> => {
     title: entry.data.title,
     description: entry.data.description,
     publishedAt: entry.data.publishedAt,
-    url: `/posts/${entry.slug}/`,
+    url: `/posts/${entry.id}/`,
     isExternal: false,
   }));
 

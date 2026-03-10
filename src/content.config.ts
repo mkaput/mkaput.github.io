@@ -1,4 +1,5 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { isSameUtcDate, isUtcDateOnly, parseDateInput } from "./lib/date";
 import { serviceIds } from "./lib/services";
 
@@ -16,7 +17,7 @@ const external = defineCollection({
       service: z.enum(serviceIds),
       title: z.string(),
       description: z.string(),
-      url: z.string().url(),
+      url: z.url(),
       publishedAt: z.coerce.date(),
     }),
   ),
@@ -39,7 +40,7 @@ const posts = defineCollection({
 
       if (isSameUtcDate(data.publishedAt, data.modifiedAt)) {
         ctx.addIssue({
-          code: z.ZodIssueCode.custom,
+          code: "custom",
           message: "modifiedAt must be omitted when it matches publishedAt.",
           path: ["modifiedAt"],
         });
